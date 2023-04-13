@@ -15,27 +15,27 @@ function App() {
           <h1 className="text-xl text-center mb-2 font-semibold">Pending</h1>
           <TaskCard
             title="Build the website with static content"
-            dueDate="7-04-2023"
+            dueDate="10th April"
             assigneeName="Rohit S"
           />
           <TaskCard
             title="Add a blog"
-            dueDate="6-04-2023"
+            dueDate="22nd March"
             assigneeName="Rohit M"
           />
-          <button className="bg-gray-300 rounded p-1 mt-2">+NewTask</button>
+          <button className="bg-gray-300 text-left font-semibold rounded p-1 mt-2 w-full">+ New task</button>
         </div>
 
         <div className="border border-black rounded-2xl p-4 pb-32 float-left">
           <h1 className="text-xl font-semibold text-center mb-2">Done</h1>
           <TaskCard
             title="Design the mockup"
-            completedAtDate="7-04-2023"
+            completedAtDate="10th April"
             assigneeName="Rohit M"
           />
           <TaskCard
             title="Get the approval from principal"
-            completedAtDate="8-04-2023"
+            completedAtDate="20th April"
             assigneeName="Ajay S"
           />
         </div>
