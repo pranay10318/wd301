@@ -1,0 +1,29 @@
+welcome to 301 course:
+here i am gonna learn typescript and react  -->frontend developemnt
+
+for installing node on our computer we use nvm(node version manager)
+nvm install 18  --> installs node version 18.0
+
+here in react we use npm npx
+npx is a CLI tool   which makes easy to run any sort of Node.js based executable that you would normally install via npm
+
+and we have commands like create-react-app for creating a new react project
+
+and we use jsx in this  jsx is javascript xml
+
+variables are mentioned in html  in {}
+
+we have components here 
+Always start component names with a capital letter because react treats components starting with lower case as HTML tag.
+
+technically react component is a js function  that we can sprikle up with markup    
+jsx syntax   for embedding markup inside it
+
+eg :
+const TaskList = () => {
+	return <h1>hello world </h1>
+}
+we can declare above function in the same file and can use this component as <TaskList/> 
+
+CRA:  create react app 
+cerate react app
