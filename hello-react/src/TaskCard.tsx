@@ -1,3 +1,4 @@
+import React from 'react';
 import './TaskCard.css'
 const TaskCard = (props) => {
     let x = "Due on: " + props.dueDate
@@ -10,4 +11,4 @@ const TaskCard = (props) => {
         </div>
     );
 }
-export default TaskCard
+export default TaskCard;
