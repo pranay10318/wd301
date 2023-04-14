@@ -1,7 +1,6 @@
 import './TaskCard.css'
 
 const TaskCard = (props) => {
-  console.log(props)
   if(props.dueDate) {
     return (
       <div className='TaskItem'>
@@ -13,7 +12,7 @@ const TaskCard = (props) => {
   }
   return (
     <div className='TaskItem'>
-      <h2 className="text-xl font-bold mb-2">{props.title}</h2>
+      <p className="text-xl font-bold mb-2">{props.title}</p>
       <p>Completed on: {props.completedAtDate}</p>
       <p>Assignee: {props.assigneeName}</p>
     </div>
