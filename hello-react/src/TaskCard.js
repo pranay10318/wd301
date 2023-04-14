@@ -5,7 +5,7 @@ const TaskCard = (props) => {
   if(props.dueDate) {
     return (
       <div className='TaskItem'>
-        <h2 className="text-xl font-bold mb-2">{props.title}</h2>
+        <p className="text-xl font-bold mb-2">{props.title}</p>
         <p>Due on: {props.dueDate}</p>
         <p>Assignee: {props.assigneeName}</p>
       </div>
