@@ -4,6 +4,18 @@
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "create-react-app": "^5.0.1",
     "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
+    "prettier": "2.8.7"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

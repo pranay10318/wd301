@@ -22,46 +22,51 @@ name = false;
 console.log(name);
 
 function printHello(): void {
-    console.log("function called..");
+  console.log("function called..");
 }
-printHello()
+printHello();
 
 // function throwError(): never {
 //     throw new Error("An error occurred!");
 // }
 // console.log(throwError())
-let userName = "Jane";  // type: string
-let userID = 10;  // type: number
+let userName = "Jane"; // type: string
+let userID = 10; // type: number
 let uniqueID = userName + userID;
 
-console.log(uniqueID);//automatically checks datatypes and concats as a string
+console.log(uniqueID); //automatically checks datatypes and concats as a string
 
 interface User {
-  name: string,
-  id: number,
-  greet(): string,
+  name: string;
+  id: number;
+  greet(): string;
 }
 
 let user: User = {
-    name : "prnay",
-    id:1,
-    greet() {
-        return 'hello mister man' + ` ${this.name}`;
-    }
-}
+  name: "prnay",
+  id: 1,
+  greet() {
+    return "hello mister man" + ` ${this.name}`;
+  },
+};
 console.log(user.greet());
 function greeting(): string {
-return "hello this is satwicks thing ";
+  return "hello this is satwicks thing ";
 }
-const user2 : User = {name: 'satwick', id: 123,greet() {return "this";}};
+const user2: User = {
+  name: "satwick",
+  id: 123,
+  greet() {
+    return "this";
+  },
+};
 console.log(user2.greet());
 
 interface greetFn {
-    (user2: User): string;
+  (user2: User): string;
 }
 
 const func = (user: User) => {
-return user.name;
-} 
+  return user.name;
+};
 console.log(func(user));
-
