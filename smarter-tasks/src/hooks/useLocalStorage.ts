@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 const getStoredValue = <T>(key: string, defaultValue: T): T => {
   const savedItem = localStorage.getItem(key);
   if (savedItem) {
+    console.log("saved item is " + savedItem);
     return JSON.parse(savedItem);
   }
   return defaultValue;

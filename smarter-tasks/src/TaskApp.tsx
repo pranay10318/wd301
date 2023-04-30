@@ -18,12 +18,12 @@ const TaskApp = (props: TaskAppProp) => {
   );
 
   React.useEffect(() => {
-    const id = setTimeout(() => {
-      console.log(`Saved ${taskAppState.tasks.length} items to backend...`);
-    }, 5000);
+    // const id = setTimeout(() => {
+    console.log(`Saved ${taskAppState.tasks.length} items to backend...`); //here set item to localstorage
+    // }, 5000);
     return () => {
       console.log("clear or cancel any existing network call");
-      clearTimeout(id);
+      // clearTimeout(id);
     };
   }, [taskAppState.tasks]);
 
@@ -42,7 +42,7 @@ const TaskApp = (props: TaskAppProp) => {
           <h1 className="text-slate-500 font-bold text-center mb-2">Pending</h1>
           <TaskForm addTask={addTask} />
           <div className="rounded-lg">
-            <TaskList tasks={taskAppState.tasks} />
+            <TaskList tasks={taskAppState.tasks} setTask={setTaskAppState} />
           </div>
         </div>
       </div>

@@ -1,44 +1,60 @@
 import React from "react";
 import Task from "./Task";
-interface Props {
+interface TaskAppState {
   tasks: TaskItem[];
-  //shall change here and try once
-  // onTaskDelete
 }
 interface TaskItem {
   title: string;
   description: string;
   dueDate: string;
 }
+interface Props {
+  tasks: TaskItem[];
+  setTask: React.Dispatch<React.SetStateAction<TaskAppState>>;
+}
+//shall change here and try once
+// onTaskDelete
 // interface State {}
 
 const TaskList = (props: Props) => {
   const func = (idx: number) => {
-    const ut = props.tasks.filter((task, id) => {
+    const updatedTasks = props.tasks.filter((task, id) => {
       return id !== idx;
     });
-    localStorage.setItem("tasks", JSON.stringify(ut));
+    const updatedTaskAppState: TaskAppState = {
+      tasks: updatedTasks,
+    };
+
+    // Call setTaskAppState with the updated taskAppState object
+    props.setTask(updatedTaskAppState);
   };
-  const list = props.tasks.map((task, idx) => (
-    <li>
-      <Task
-        key={idx}
-        title={task.title}
-        description={task.description}
-        dueDate={task.dueDate}
-      />
-      <button
-        id="deleteTaskButton"
-        className="deleteTaskButton"
-        onClick={() => {
-          func(idx);
-        }}
-      >
-        delete
-      </button>
-    </li>
-  ));
-  return <ol className="list-none">{list}</ol>;
+  // const list =
+  return (
+    <ol className="list-none">
+      {props.tasks &&
+        props.tasks.map((task, idx) => (
+          <li
+            key={idx}
+            className="TaskItem shadow-md-5 border border-solid border-2 my-6"
+          >
+            <Task
+              title={task.title}
+              description={task.description}
+              dueDate={task.dueDate}
+            />
+            <button
+              id="deleteTaskButton"
+              className="deleteTaskButton bg-red-400 hover:cursor-pointer py-0 px-1 rounded my-3"
+              onClick={() => {
+                func(idx);
+              }}
+            >
+              delete
+            </button>
+          </li>
+        ))}
+    </ol>
+  );
 };
 
 // class TaskList extends React.Component<Props, State> {
