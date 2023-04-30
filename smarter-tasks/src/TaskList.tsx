@@ -1,5 +1,7 @@
 import React from "react";
 import Task from "./Task";
+import "./TaskCard.css";
+
 interface TaskAppState {
   tasks: TaskItem[];
 }
@@ -22,6 +24,7 @@ const TaskList = (props: Props) => {
       return id !== idx;
     });
     const updatedTaskAppState: TaskAppState = {
+      ...props.tasks,
       tasks: updatedTasks,
     };
 
@@ -33,17 +36,13 @@ const TaskList = (props: Props) => {
     <ol className="list-none">
       {props.tasks &&
         props.tasks.map((task, idx) => (
-          <li
-            key={idx}
-            className="TaskItem shadow-md-5 border border-solid border-2 my-6"
-          >
+          <li key={idx} className="shadow-md-5 border border-solid my-6">
             <Task
               title={task.title}
               description={task.description}
               dueDate={task.dueDate}
             />
             <button
-              id="deleteTaskButton"
               className="deleteTaskButton bg-red-400 hover:cursor-pointer py-0 px-1 rounded my-3"
               onClick={() => {
                 func(idx);
