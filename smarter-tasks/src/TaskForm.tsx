@@ -2,16 +2,20 @@
 import React from "react";
 import { TaskItem } from "./types";
 interface TaskFormProps {
-  addTask: (task: TaskItem) => void;
+  addTask: (task: TaskItem) => void; //here we are getting props from parent i.e. TaskApp
 }
 interface TaskFormState {
+  id: string;
   title: string;
   description: string;
   dueDate: string;
 }
 
 const TaskForm = (props: TaskFormProps) => {
+  const uid = Date.now().toString(36);
+
   const [formState, setFormState] = React.useState<TaskFormState>({
+    id: uid,
     title: "",
     description: "",
     dueDate: "",
@@ -37,14 +41,16 @@ const TaskForm = (props: TaskFormProps) => {
     console.log(`${event.target.value}`);
     setFormState({ ...formState, dueDate: event.target.value });
   };
+
   const addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     console.log(`Submitted the form with`);
     if (formState.title.length === 0 || formState.dueDate.length === 0) {
       return;
     }
-    props.addTask(formState);
-    setFormState({ title: "", description: "", dueDate: "" });
+    // setFormState({ ...formState, id: uid });
+    props.addTask(formState); //taskItem
+    setFormState({ id: uid, title: "", description: "", dueDate: "" });
   };
 
   return (

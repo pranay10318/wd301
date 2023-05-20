@@ -6,6 +6,7 @@ interface TaskAppState {
   tasks: TaskItem[];
 }
 interface TaskItem {
+  id: string;
   title: string;
   description: string;
   dueDate: string;
@@ -38,6 +39,7 @@ const TaskList = (props: Props) => {
         props.tasks.map((task, idx) => (
           <li key={idx} className="shadow-md-5 border border-solid my-6">
             <Task
+              id={task.id}
               title={task.title}
               description={task.description}
               dueDate={task.dueDate}
