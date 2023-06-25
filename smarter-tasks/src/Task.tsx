@@ -18,19 +18,4 @@ const TaskFC = (props: TaskProp) => {
     </div>
   );
 };
-// class Task extends React.Component<TaskProp> {
-//   render() {
-//     return (
-//       <div className="TaskItem m-2">
-//         <p>
-//           {" "}
-//           <span className="text-m font-bold">{this.props.title + "  "}</span>
-//           <span>({this.props.dueDate})</span>
-//         </p>
-
-//         <p>{this.props.description}</p>
-//       </div>
-//     );
-//   }
-// }
 export default TaskFC;
