@@ -31,13 +31,10 @@ const SignupForm: React.FC = () => {
       }
       console.log("Sign-up successful");
 
-      if (response) {
-        alert("you are already registered..!");
-        navigate("/signin");
-      }
       const data = await response.json();
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("userData", JSON.stringify(data.user));
+
       navigate("/dashboard");
     } catch (error) {
       console.error("Sign-up failed:", error);
