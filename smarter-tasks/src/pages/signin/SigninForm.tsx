@@ -1,17 +1,21 @@
-import React, { useState } from "react";
-// Dialogue 1: First we will import the API_ENDPOINT constant from the `config` folder
 import { API_ENDPOINT } from "../../config/constants";
 import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 const SigninForm: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  type Inputs = {
+    email: string;
+    password: string;
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
   const navigate = useNavigate();
-
-  // Dialogue 2: Then we will define the handle submit function
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const { email, password } = data; //destructuring form data
 
     try {
       const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
@@ -40,19 +44,19 @@ const SigninForm: React.FC = () => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
+          {/* {error && <span>{error}</span>} //here in we can use error stateoutside the form*/}
           <label className="block text-gray-700 font-semibold mb-2">
             Email:
           </label>
           <input
             type="email"
-            name="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("email", { required: true })}
             className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
           />
+          {errors.email && <span>This field is required</span>}
         </div>
         <div>
           <label className="block text-gray-700 font-semibold mb-2">
@@ -60,12 +64,11 @@ const SigninForm: React.FC = () => {
           </label>
           <input
             type="password"
-            name="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            {...register("password", { required: true })}
             className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
           />
+          {errors.password && <span>This field is required</span>}
         </div>
         <button
           type="submit"
