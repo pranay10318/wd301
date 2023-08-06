@@ -5,7 +5,7 @@ import {
   useMembersState,
 } from "../../context/members/context";
 import trash from "../../assets/images/trash.png";
-import { deleteMember } from "../../context/members/action";
+import { deleteMember } from "../../context/members/actions";
 export default function MemberListItems() {
   let state: any = useMembersState();
 
