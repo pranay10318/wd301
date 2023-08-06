@@ -5,6 +5,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/smarter-tasks-tempiii
+/accomplished
 
 # testing
 /coverage
