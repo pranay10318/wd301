@@ -46,6 +46,7 @@ const NewMember = () => {
     <>
       <button
         type="button"
+        id="new-member-btn"
         onClick={openModal}
         className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
@@ -88,8 +89,8 @@ const NewMember = () => {
                       {error && <span>{error}</span>}
                       <input
                         type="text"
-                        id="name"
                         placeholder="Enter Member name..."
+                        id="name"
                         autoFocus
                         {...register("name", { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
