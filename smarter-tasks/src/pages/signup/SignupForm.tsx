@@ -105,7 +105,7 @@ const SignupForm: React.FC = () => {
       >
         Sign up
       </button>
-      <button onClick={handleSignin}>Already have an account?</button>
+      {/* <button onClick={handleSignin}>Already have an account?</button> */}
     </form>
   );
 };

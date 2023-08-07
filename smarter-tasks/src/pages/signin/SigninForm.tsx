@@ -77,7 +77,7 @@ const SigninForm: React.FC = () => {
           Sign In
         </button>
       </form>
-      <button onClick={handleSignup}>Don't have an account?</button>
+      {/* <button onClick={handleSignup}>Don't have an account?</button> */}
     </>
   );
 };
