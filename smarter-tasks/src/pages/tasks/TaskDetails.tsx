@@ -8,6 +8,8 @@ import { updateTask } from "../../context/task/actions";
 import { useProjectsState } from "../../context/projects/context";
 import { TaskDetailsPayload } from "../../context/task/types";
 import { useMembersState } from "../../context/members/context";
+import { CommentsProvider } from "../../context/comment/context";
+import { Comments } from "./comments/Comments";
 
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
@@ -78,6 +80,7 @@ const TaskDetails = () => {
     });
     closeModal();
   };
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -198,6 +201,10 @@ const TaskDetails = () => {
                         Cancel
                       </button>
                     </form>
+
+                    <CommentsProvider>
+                      <Comments />
+                    </CommentsProvider>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

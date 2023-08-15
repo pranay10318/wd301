@@ -4,28 +4,7 @@ export interface TaskListState {
   errorMessage: string;
 }
 
-// Actions that are available
-// export enum TaskListAvailableAction {
-//   CREATE_TASK_REQUEST = "CREATE_TASK_REQUEST",
-//   CREATE_TASK_SUCCESS = "CREATE_TASK_SUCCESS",
-//   CREATE_TASK_FAILURE = "CREATE_TASK_FAILURE",
-// }
-
-// Create a type to hold list of actions that can be dispatched
-// export type TaskActions =
-//   | { type: TaskListAvailableAction.CREATE_TASK_REQUEST }
-//   | { type: TaskListAvailableAction.CREATE_TASK_SUCCESS }
-//   | { type: TaskListAvailableAction.CREATE_TASK_FAILURE; payload: string };
-
-// A type to hold dispatch actions in a context.
 export type TasksDispatch = React.Dispatch<TaskActions>;
-
-// export type TaskDetailsPayload = {
-//   title: string;
-//   description: string;
-//   dueDate: string;
-// };
-
 export type AvailableColumns = "pending" | "in_progress" | "done";
 export type ColumnData = {
   id: string;
@@ -78,7 +57,6 @@ export enum TaskListAvailableAction {
   CREATE_TASK_SUCCESS = "CREATE_TASK_SUCCESS",
   CREATE_TASK_FAILURE = "CREATE_TASK_FAILURE",
 
-  // Add action types
   UPDATE_TASK_REQUEST = "UPDATE_TASK_REQUEST",
   UPDATE_TASK_SUCCESS = "UPDATE_TASK_SUCCESS",
   UPDATE_TASK_FAILURE = "UPDATE_TASK_FAILURE",

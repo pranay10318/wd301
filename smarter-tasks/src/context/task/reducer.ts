@@ -49,7 +49,6 @@ export const taskReducer: Reducer<TaskListState, TaskActions> = (
         isError: true,
         errorMessage: action.payload,
       };
-    // Toggle the loading state based on action
     case TaskListAvailableAction.UPDATE_TASK_REQUEST:
       return { ...state, isLoading: true };
     case TaskListAvailableAction.UPDATE_TASK_SUCCESS:

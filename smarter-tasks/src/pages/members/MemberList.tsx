@@ -7,6 +7,7 @@ const MemberList: React.FC = () => {
   const dispatchMembers = useMembersDispatch();
 
   useEffect(() => {
+    // updating the state at the top level component
     fetchMembers(dispatchMembers);
   }, []);
   return (
