@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useCommentsDispatch } from "../../../context/comment/context";
 import { addComment, fetchComments } from "../../../context/comment/actions";
 import { CommentListItems } from "./CommentListItems";
 import { Comment } from "../../../context/comment/types";
+import ErrorBoundary from "../../../components/ErrorBoundary";
 
 export const Comments = () => {
   const CommentsDispatch = useCommentsDispatch();
@@ -65,7 +66,11 @@ export const Comments = () => {
         </button>
       </form>
       {/* <button onClick={handleSignup}>Don't have an account?</button> */}
-      <CommentListItems />
+      <ErrorBoundary>
+        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+          <CommentListItems />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };
