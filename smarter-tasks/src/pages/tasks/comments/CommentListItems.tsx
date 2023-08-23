@@ -4,7 +4,7 @@ import { CommentState } from "../../../context/comment/types";
 import { MembersState } from "../../../context/members/reducer";
 import { useMembersState } from "../../../context/members/context";
 
-export const CommentListItems = () => {
+const CommentListItems = () => {
   const state: CommentState = useCommentsState();
   const memberState: MembersState | undefined = useMembersState();
   const { members }: any = memberState;
@@ -40,3 +40,4 @@ export const CommentListItems = () => {
     </>
   );
 };
+export default CommentListItems;
