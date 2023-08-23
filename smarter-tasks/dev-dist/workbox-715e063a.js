@@ -8,23 +8,6 @@ define(["exports"], function (exports) {
 
   /*
       Copyright 2019 Google LLC
-
-      Use of this source code is governed by an MIT-style
-      license that can be found in the LICENSE file or at
-      https://opensource.org/licenses/MIT.
-    */
-  /**
-   * Claim any currently available clients once the service worker
-   * becomes active. This is normally used in conjunction with `skipWaiting()`.
-   *
-   * @memberof workbox-core
-   */
-  function clientsClaim() {
-    self.addEventListener("activate", () => self.clients.claim());
-  }
-
-  /*
-      Copyright 2019 Google LLC
       Use of this source code is governed by an MIT-style
       license that can be found in the LICENSE file or at
       https://opensource.org/licenses/MIT.
@@ -3655,7 +3638,6 @@ define(["exports"], function (exports) {
 
   exports.NavigationRoute = NavigationRoute;
   exports.cleanupOutdatedCaches = cleanupOutdatedCaches;
-  exports.clientsClaim = clientsClaim;
   exports.createHandlerBoundToURL = createHandlerBoundToURL;
   exports.precacheAndRoute = precacheAndRoute;
   exports.registerRoute = registerRoute;
