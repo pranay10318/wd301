@@ -4,7 +4,10 @@ interface ErrorBoundaryState {
   hasError: boolean;
 }
 
-class ErrorBoundary extends Component<any, ErrorBoundaryState> {
+interface Children {
+  children?: ReactNode;
+}
+class ErrorBoundary extends Component<Children, ErrorBoundaryState> {
   constructor(props: {}) {
     super(props);
     this.state = { hasError: false };
@@ -15,7 +18,6 @@ class ErrorBoundary extends Component<any, ErrorBoundaryState> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    // You can log the error or send it to an error reporting service
     console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 
