@@ -5,7 +5,8 @@
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "create-react-app": "^5.0.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vite-plugin-pwa": "^0.16.4"
   },
   "devDependencies": {
     "husky": "^8.0.3",
