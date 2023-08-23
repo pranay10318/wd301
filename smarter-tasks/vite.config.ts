@@ -1,15 +1,17 @@
 import { defineConfig } from "vite";
-import { VitePWA } from "vite-plugin-pwa";
 import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
 
 export default ({ mode }) => {
   return defineConfig({
+    build: {
+      outDir: "build",
+    },
     plugins: [
       react(),
       VitePWA({
-        registerType: "autoUpdate",
         devOptions: {
-          enabled: true, // For making sure that the PWA is testable from the Local dev environment
+          enabled: true,
         },
         manifest: {
           name: "Smarter Tasks application",
@@ -29,6 +31,17 @@ export default ({ mode }) => {
               src: "/favicon-32x32.png",
               type: "image/png",
               sizes: "32x32",
+            },
+            {
+              src: "/pwa-192x192.png",
+              type: "image/png",
+              sizes: "192x192",
+            },
+            {
+              src: "/pwa-512x512.png",
+              type: "image/png",
+              sizes: "512x512",
+              purpose: "any maskable",
             },
           ],
           theme_color: "#AAF",
