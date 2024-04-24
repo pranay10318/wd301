@@ -10,6 +10,7 @@ import { TaskDetailsPayload } from "../../context/task/types";
 import { useMembersState } from "../../context/members/context";
 import { CommentsProvider } from "../../context/comment/context";
 import { Comments } from "./comments/Comments";
+import { useTranslate } from "../../context/translate";
 
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
@@ -26,6 +27,7 @@ const formatDateForPicker = (isoDate: string) => {
 };
 
 const TaskDetails = () => {
+  const {t} = useTranslate();
   let [isOpen, setIsOpen] = useState(true);
 
   let { projectID, taskID } = useParams();
@@ -142,7 +144,7 @@ const TaskDetails = () => {
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
                       <h3>
-                        <strong>Assignee</strong>
+                        <strong>{t('Assignee')}</strong>
                       </h3>
                       <Listbox
                         value={selectedPerson}
@@ -191,14 +193,14 @@ const TaskDetails = () => {
                         type="submit"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 mr-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
-                        Update
+                        {t('Update')}
                       </button>
                       <button
                         type="submit"
                         onClick={closeModal}
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
-                        Cancel
+                        {t('')}Cancel
                       </button>
                     </form>
 

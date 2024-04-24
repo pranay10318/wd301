@@ -10,6 +10,7 @@ const SignupForm: React.FC = () => {
     userEmail: string;
     userPassword: string;
   };
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
@@ -39,13 +40,26 @@ const SignupForm: React.FC = () => {
         alert("sign in failed");
         throw new Error("Sign-up failed");
       }
+      const res = await fetch(`${API_ENDPOINT}/users/sign_in`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email:userEmail, password:userPassword }),
+      });
+
+      if (!res.ok) {
+        setErrorMessage("User already exists. Please try signing in.");
+        throw new Error("Sign-up failed");
+      }
+
+
       console.log("Sign-up successful");
+      setErrorMessage("");
 
       const data = await response.json();
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("userData", JSON.stringify(data.user));
 
-      navigate("/account");
+      navigate("/signin");
     } catch (error) {
       console.error("Sign-up failed:", error);
     }
@@ -56,6 +70,8 @@ const SignupForm: React.FC = () => {
   };
 
   return (
+    <>
+    {errorMessage && <span style={{color: "red"}}>{errorMessage}</span>}
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">
@@ -105,8 +121,8 @@ const SignupForm: React.FC = () => {
       >
         Sign up
       </button>
-      {/* <button onClick={handleSignin}>Already have an account?</button> */}
-    </form>
+      <button onClick={handleSignin}>Already have an account?</button>
+    </form></>
   );
 };
 

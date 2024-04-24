@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import router from "./routes";
@@ -10,6 +10,7 @@ import { ThemeContext } from "./context/theme";
 
 import { ProjectsProvider } from "./context/projects/context";
 import { MembersProvider } from "./context/members/context";
+import { TranslationProvider } from "./context/translate";
 
 // Then I'll wrap the RouterProvider component with the <ProjectsProvider> component.
 const App = () => {
@@ -20,11 +21,13 @@ const App = () => {
         theme === "dark" ? "dark" : ""
       }`}
     >
-      <ProjectsProvider>
-        <MembersProvider>
-          <RouterProvider router={router} />
-        </MembersProvider>
-      </ProjectsProvider>
+      <TranslationProvider>
+        <ProjectsProvider>
+          <MembersProvider>
+            <RouterProvider router={router} />
+          </MembersProvider>
+        </ProjectsProvider>
+      </TranslationProvider>
     </div>
   );
 };

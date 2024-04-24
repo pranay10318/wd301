@@ -1,10 +1,10 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition, Switch } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import Logo from "../../assets/images/logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { ThemeContext } from "../../context/theme";
-
+import {useTranslate } from "../../context/translate";
 const userNavigation = [
   { name: "Profile", href: "#" },
   { name: "Sign out", href: "/logout" },
@@ -14,6 +14,11 @@ const classNames = (...classes: string[]): string =>
   classes.filter(Boolean).join(" ");
 
 const Appbar = () => {
+  const { t, i18n: {changeLanguage, language} } = useTranslate();
+  useEffect(() => {
+    console.log("Language has been updated:", language);
+  }, [language]);
+
   const { theme, setTheme } = useContext(ThemeContext);
   const [enabled, setEnabled] = useState(theme === "dark");
   const { pathname } = useLocation();
@@ -26,6 +31,11 @@ const Appbar = () => {
     }
     setEnabled(!enabled);
     setTheme(newTheme);
+  };
+  const [langText, setLangText] = useState(language);
+  const changeLanguagee = () => {
+    setLangText((langText==='en' ? 'es': 'en'));
+    changeLanguage(langText);
   };
 
   const navigation = [
@@ -60,8 +70,8 @@ const Appbar = () => {
                           )}
                           aria-current={isCurrent ? "page" : undefined}
                         >
-                          {item.name}
-                        </Link>
+                          {t(`${item.name}`)}
+                        </Link> 
                       );
                     })}
                   </div>
@@ -69,6 +79,11 @@ const Appbar = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-4 flex items-center md:ml-6">
+                <button
+                    onClick={changeLanguagee}
+                    className={`bg-blue-500 text-7xl mr-6 relative inline-flex items-center justify-center h-[24px] w-[60px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out text-lg hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500`}                  >
+  {langText === 'en' ? '🇬🇧' : '🇪🇸'}
+                  </button>
                   <Switch
                     checked={enabled}
                     onChange={toggleTheme}
@@ -81,6 +96,7 @@ const Appbar = () => {
                       pointer-events-none inline-block h-[16px] w-[16px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
                     />
                   </Switch>
+                  
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="rounded-full bg-white p-1 text-gray-400 hover:text-blue-600">

@@ -6,8 +6,10 @@ import { useTasksDispatch, useTasksState } from "../../context/task/context";
 import DragDropList from "./DragDropList";
 import { refreshTasks } from "../../context/task/actions";
 import { useProjectsState } from "../../context/projects/context";
+import { useTranslate } from "../../context/translate";
 
 const ProjectDetails = () => {
+  const {t}=useTranslate();
   const tasksState = useTasksState();
   const taskDispatch = useTasksDispatch();
   const projectState = useProjectsState();
@@ -24,7 +26,7 @@ const ProjectDetails = () => {
   }
 
   if (tasksState.isLoading) {
-    return <>Loading...</>;
+    return <>{t('Loading')}...</>;
   }
   return (
     <>
@@ -37,7 +39,7 @@ const ProjectDetails = () => {
             id="newTaskBtn"
             className="rounded-md bg-blue-600 px-4 py-2 m-2 text-sm font-medium text-white hover:bg-opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
           >
-            New Task
+            {t('New Task')}
           </button>
         </Link>
       </div>

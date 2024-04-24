@@ -3,12 +3,14 @@ import { useCommentsState } from "../../../context/comment/context";
 import { CommentState } from "../../../context/comment/types";
 import { MembersState } from "../../../context/members/reducer";
 import { useMembersState } from "../../../context/members/context";
+import { useTranslate } from "../../../context/translate";
 
 const CommentListItems = () => {
   const state: CommentState = useCommentsState();
   const memberState: MembersState | undefined = useMembersState();
   const { members }: any = memberState;
   const { comments, isLoading, isError, errorMessage } = state;
+  const {t, i18n:{changeLanguage, language}} = useTranslate();
   if (isLoading) {
     return <span>Loading...</span>;
   }
@@ -34,7 +36,7 @@ const CommentListItems = () => {
             {comment.description}
           </h5>
           by: {findOwner(comment.owner)} at{" "}
-          {new Date(comment.createdAt).toLocaleString("en-IN")}
+          {new Date(comment.createdAt).toLocaleString((language=="en"? "en-US":"es-ES"))}
         </div>
       ))}
     </>

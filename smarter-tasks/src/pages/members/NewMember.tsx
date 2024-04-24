@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { addMember } from "../../context/members/actions";
 import { useMembersDispatch } from "../../context/members/context";
+import { useTranslate } from "../../context/translate";
 
 type Inputs = {
   name: string;
@@ -12,6 +13,7 @@ type Inputs = {
 };
 
 const NewMember = () => {
+  const {t} = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(null);
 
@@ -50,7 +52,7 @@ const NewMember = () => {
         onClick={openModal}
         className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
-        New Member
+        {t('New Member')}
       </button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
