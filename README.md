@@ -1,11 +1,10 @@
-Copy code
 # Smarter Tasks App
 
 Welcome to the Smarter Tasks App, a project management system built using Redux, React, and TypeScript.
 
 ## Live Demo
 
-Check out the live demo [here](https://helpful-gumdrop-ec55b5.netlify.app/).
+Check out the live demo of Smarter-Tasks in  [here](https://helpful-gumdrop-ec55b5.netlify.app/).
 
 ## Features
 
@@ -45,7 +44,3 @@ npm start
 ## Contributing
 
 Contributions are welcome! If you have any ideas for improvements or new features, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
